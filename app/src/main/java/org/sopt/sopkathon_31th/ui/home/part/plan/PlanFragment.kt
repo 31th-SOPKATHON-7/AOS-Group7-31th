@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import org.sopt.sopkathon_31th.data.remote.entity.home.ResponseHomeDto
 import org.sopt.sopkathon_31th.databinding.FragmentPlanBinding
 import org.sopt.sopkathon_31th.ui.home.part.adapter.PartMemberDecorator
 import org.sopt.sopkathon_31th.ui.home.part.adapter.PartMembersAdapter
@@ -39,20 +38,9 @@ class PlanFragment : Fragment() {
     }
 
     private fun initList() {
-        /*planViewModel.planProfiles.observe(viewLifecycleOwner) {
+        planViewModel.planProfiles.observe(viewLifecycleOwner) {
             planAdapter.submitList(it)
-        }*/
-        planAdapter.submitList(
-            listOf(
-                ResponseHomeDto.Data(0, "", "권용민"),
-                ResponseHomeDto.Data(1, "", "김동재"),
-                ResponseHomeDto.Data(2, "", "김지은"),
-                ResponseHomeDto.Data(3, "", "김지영"),
-                ResponseHomeDto.Data(4, "", "전채연"),
-                ResponseHomeDto.Data(5, "", "임채영"),
-                ResponseHomeDto.Data(6, "", "심혜빈")
-            )
-        )
+        }
     }
 
     override fun onDestroyView() {
