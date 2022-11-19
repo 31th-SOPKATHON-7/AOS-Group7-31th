@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Sopkathon_31th</string>
     <string name="profile_back_btn">back</string>
-    <string name="profile_nickname">주우재</string>
-    <string name="profile_part">서버/YB</string>
+    <string name="profile_nickname">장원영</string>
+    <string name="profile_part">기획/YB</string>
     <string name="profile_btn1">문제풀기</string>
     <string name="profile_btn2">이름 훔치기</string>
     <string name="profile_subtitle">자기소개</string>

@@ -10,15 +10,20 @@ import org.sopt.sopkathon_31th.databinding.ProfileItemBinding
 class ProfileAdapter(context: Context) : RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
     private var profileList: List<ResponseProfileDto.Data.User> = emptyList()
-    private val keyList =
-        listOf<String>("본명", "나이", "mbti", "학교", "전공", "성별", "얼굴형", "3대몇", "발사이즈", "키")
+    private val keys = mutableListOf<String>()
+    private val values = mutableListOf<String>()
+    fun initList(key: List<String>, value: List<String>) {
+        keys.addAll(key)
+        values.addAll(value)
+        notifyDataSetChanged()
+    }
 
     inner class ProfileViewHolder(
         private val binding: ProfileItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(profile: ResponseProfileDto.Data.User, position: Int) {
-            binding.profileTableTitle.text = keyList.get(position)
-            binding.profileTableValue.text = profile.name
+        fun onBind(key: String, value: String) {
+            binding.profileTableTitle.text = key
+            binding.profileTableValue.text = value
         }
     }
 
@@ -28,15 +33,10 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<ProfileAdapter.Pro
     }
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
-        holder.onBind(profileList[position], position)
-    }
-
-    fun setRepoList(repoList: List<ResponseProfileDto.Data.User>) {
-        this.profileList = repoList.toList()
-        notifyDataSetChanged()
+        holder.onBind(keys[position], values[position])
     }
 
     override fun getItemCount(): Int {
-        return profileList.size
+        return keys.size
     }
 }

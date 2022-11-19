@@ -8,6 +8,6 @@ import retrofit2.http.Path
 interface ProfileService {
     @GET("/page/{userId}")
     fun getProfile(
-        @Path("userId") userId: Long
+        @Path("userId") userId: Int
     ): Call<ResponseProfileDto>
 }
