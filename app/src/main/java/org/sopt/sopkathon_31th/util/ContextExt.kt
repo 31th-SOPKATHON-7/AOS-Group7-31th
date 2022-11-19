@@ -1,4 +1,4 @@
-package org.sopt.sopkathon_31th.util
+package org.sopt.sopkathon_31th.util // ktlint-disable package-name
 
 import android.content.Context
 import android.widget.Toast
