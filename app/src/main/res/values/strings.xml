@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Sopkathon_31th</string>
+    <string name="profile_back_btn">back</string>
+    <string name="profile_nickname">주우재</string>
+    <string name="profile_part">서버/YB</string>
+    <string name="profile_btn1">문제풀기</string>
+    <string name="profile_btn2">이름 훔치기</string>
+    <string name="profile_subtitle">자기소개</string>
+
+    <string name="tablerow1_title">본명</string>
+    <string name="tablerow1_value">김동재</string>
+    <string name="tablerow2_title">나이</string>
+    <string name="tablerow2_value">23세</string>
+    <string name="tablerow3_title">mbti</string>
+    <string name="tablerow3_value">ESTJ</string>
+    <string name="tablerow4_title">학교</string>
+    <string name="tablerow4_value">동국대학교</string>
+    <string name="tablerow5_title">전공</string>
+    <string name="tablerow5_value">정보통신학과</string>
+    <string name="tablerow6_title">성별</string>
+    <string name="tablerow6_value">남성</string>
+    <string name="tablerow7_title">얼굴형</string>
+    <string name="tablerow7_value">미남형</string>
+    <string name="tablerow8_title">3대몇</string>
+    <string name="tablerow8_value">260</string>
+    <string name="tablerow9_title">발사이즈</string>
+    <string name="tablerow9_value">260mm</string>
+    <string name="tablerow10_title">키</string>
+    <string name="tablerow10_value">남179cm성</string>
+
+
+
 </resources>
