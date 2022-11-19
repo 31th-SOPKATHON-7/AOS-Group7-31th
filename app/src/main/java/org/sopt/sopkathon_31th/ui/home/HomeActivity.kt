@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        homeAdapter = HomeAdapter(this) { initFragment(it) }
+        homeAdapter = HomeAdapter() { initFragment(it) }
         binding.rvPart.adapter = homeAdapter
     }
 
