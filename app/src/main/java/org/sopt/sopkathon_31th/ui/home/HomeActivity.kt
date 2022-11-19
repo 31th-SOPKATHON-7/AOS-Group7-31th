@@ -3,6 +3,7 @@ package org.sopt.sopkathon_31th.ui.home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.sopt.sopkathon_31th.R
+import org.sopt.sopkathon_31th.data.local.NameThiefStorage
 import org.sopt.sopkathon_31th.databinding.ActivityHomeBinding
 import org.sopt.sopkathon_31th.ui.home.part.*
 import org.sopt.sopkathon_31th.ui.home.part.adapter.HomeAdapter
@@ -18,6 +19,16 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initAdapter()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getCoinCount()
+    }
+
+    private fun getCoinCount() {
+        val coinCount = NameThiefStorage.getCoinCount(this)
+        binding.tvCoinCount.text = coinCount.toString()
     }
 
     private fun initAdapter() {
