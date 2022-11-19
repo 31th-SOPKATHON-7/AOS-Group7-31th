@@ -16,8 +16,8 @@ class PlanViewModel : ViewModel() {
     val planProfiles: LiveData<List<ResponseHomeDto.Data>> get() = _planProfiles
 
     fun getPlanMembers() {
-        val nameThiefService = ServiceFactory.retrofitAuth.create(HomeService::class.java)
-        nameThiefService.getHomeMembers().enqueue(object : Callback<ResponseHomeDto> {
+        val homeService = ServiceFactory.retrofitAuth.create(HomeService::class.java)
+        homeService.getHomeMembers().enqueue(object : Callback<ResponseHomeDto> {
             override fun onResponse(
                 call: Call<ResponseHomeDto>,
                 response: Response<ResponseHomeDto>
@@ -30,7 +30,7 @@ class PlanViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<ResponseHomeDto>, t: Throwable) {
-                Log.e("home server connect", "onFailure")
+                Log.e("home server connect", "onFailure, ${t.message}")
             }
         })
     }
