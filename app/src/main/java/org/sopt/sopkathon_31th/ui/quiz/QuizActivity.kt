@@ -25,14 +25,16 @@ class QuizActivity : AppCompatActivity() {
     }
 
     fun getQuizList() {
-        // ★★★ intent에서 userID 받아와서 getQuizList 함수 매개변수로 전달하기
-        if (intent.hasExtra("userId")) {
-            val savedUserId = intent.getIntExtra("id", -1)
-            viewModel.getQuizList(savedUserId)
-        } else {
-            this.shortToast("id를 불러오지 못했습니다.")
-            finish()
-        }
+        viewModel.getQuizList(1)
+
+//        // ★★★ intent에서 userID 받아와서 getQuizList 함수 매개변수로 전달하기
+//        if (intent.hasExtra("userId")) {
+//            val savedUserId = intent.getIntExtra("id", -1)
+//            viewModel.getQuizList(savedUserId)
+//        } else {
+//            this.shortToast("id를 불러오지 못했습니다.")
+//            finish()
+//        }
     }
 
     fun answerBtnOnClick() {
@@ -46,7 +48,8 @@ class QuizActivity : AppCompatActivity() {
 
     fun updateQuiz() {
         viewModel.quizIndex.observe(this) {
-            binding.tvTitle.text = "문제 " + viewModel.quizIndex.value
+            binding.tvTitle.text = "문제 ${viewModel.quizIndex.value?.plus(1)}"
+            viewModel.setQuiz()
         }
         viewModel.quizTitle.observe(this) {
             val question = viewModel.quizTitle.value?.split("\n")
