@@ -9,6 +9,6 @@ interface QuizService {
     // 개인별 퀴즈 문제 리스트 조회 API
     @GET("/page/quiz/{userId}")
     fun getQuizList(
-        @Path("userId") userId: Long
+        @Path("userId") userId: Int
     ): Call<ResponseQuizDto>
 }

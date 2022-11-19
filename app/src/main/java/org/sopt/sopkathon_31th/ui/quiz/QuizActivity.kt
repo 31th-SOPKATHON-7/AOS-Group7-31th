@@ -3,6 +3,7 @@ package org.sopt.sopkathon_31th.ui.quiz // ktlint-disable package-name
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import org.sopt.sopkathon_31th.data.local.NameThiefStorage
 import org.sopt.sopkathon_31th.databinding.ActivityQuizBinding
 import org.sopt.sopkathon_31th.util.ContextExt.shortToast
 
@@ -25,7 +26,13 @@ class QuizActivity : AppCompatActivity() {
 
     fun getQuizList() {
         // ★★★ intent에서 userID 받아와서 getQuizList 함수 매개변수로 전달하기
-        viewModel.getQuizList(1)
+        if (intent.hasExtra("userId")) {
+            val savedUserId = intent.getIntExtra("id", -1)
+            viewModel.getQuizList(savedUserId)
+        } else {
+            this.shortToast("id를 불러오지 못했습니다.")
+            finish()
+        }
     }
 
     fun answerBtnOnClick() {
@@ -59,7 +66,7 @@ class QuizActivity : AppCompatActivity() {
     fun printResult() {
         viewModel.quizResult.observe(this) {
             if (viewModel.quizResult.value == true) {
-                // ★★★ shared preference에 코인 5개 추가
+                NameThiefStorage.setCoinCout(this, 5)
                 this.shortToast("문제를 모두 맞춰 5표창 획득했습니다.")
             } else {
                 this.shortToast("틀린 문제가 있어 표창 획득에 실패했습니다.")
