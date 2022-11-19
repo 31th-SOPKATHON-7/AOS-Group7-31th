@@ -16,8 +16,7 @@ class QuizActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getQuizList()
-        oBtnOnClick()
-        xBtnOnClick()
+        answerBtnOnClick()
         closeBtnOnClick()
         updateQuiz()
         showErrorMsg()
@@ -29,11 +28,8 @@ class QuizActivity : AppCompatActivity() {
         viewModel.getQuizList(1)
     }
 
-    fun oBtnOnClick() {
+    fun answerBtnOnClick() {
         binding.btnO.setOnClickListener { viewModel.checkAnswer("O") }
-    }
-
-    fun xBtnOnClick() {
         binding.btnX.setOnClickListener { viewModel.checkAnswer("X") }
     }
 
