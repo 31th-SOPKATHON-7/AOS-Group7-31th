@@ -1,5 +1,6 @@
 package org.sopt.sopkathon_31th.ui.home.part.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,7 +11,7 @@ import org.sopt.sopkathon_31th.R
 import org.sopt.sopkathon_31th.data.remote.entity.home.ResponseHomeDto
 import org.sopt.sopkathon_31th.databinding.ItemPartMemberBinding
 
-class PartMembersAdapter :
+class PartMembersAdapter(private val clickProfile: (Int) -> Unit) :
     ListAdapter<ResponseHomeDto.Data, PartMembersAdapter.PartMembersViewHolder>(
         PartMembersComparator()
     ) {
@@ -47,6 +48,10 @@ class PartMembersAdapter :
     }
 
     override fun onBindViewHolder(holder: PartMembersViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            Log.d("asdf", "클릭됨")
+            clickProfile(getItem(position).userId)
+        }
         return holder.onBind(getItem(position))
     }
 }
