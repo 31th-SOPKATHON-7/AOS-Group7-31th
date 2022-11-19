@@ -1,7 +1,6 @@
 package org.sopt.sopkathon_31th.ui.home.part.plan
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,27 +29,28 @@ class PlanFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        // planViewModel.getPlanMembers()
+        planViewModel.getPlanMembers()
         initList()
     }
 
     private fun initAdapter() {
-        Log.d("asdf", "planFragment initAdapter1")
         binding.rvPlan.adapter = planAdapter
         binding.rvPlan.addItemDecoration(PartMemberDecorator())
-        Log.d("asdf", "planFragment initAdapter2")
     }
 
     private fun initList() {
+        /*planViewModel.planProfiles.observe(viewLifecycleOwner) {
+            planAdapter.submitList(it)
+        }*/
         planAdapter.submitList(
             listOf(
-                ResponseHomeDto("", "권용민"),
-                ResponseHomeDto("", "김동재"),
-                ResponseHomeDto("", "김지은"),
-                ResponseHomeDto("", "김지영"),
-                ResponseHomeDto("", "전채연"),
-                ResponseHomeDto("", "임채영"),
-                ResponseHomeDto("", "심혜빈")
+                ResponseHomeDto.Data(0, "", "권용민"),
+                ResponseHomeDto.Data(1, "", "김동재"),
+                ResponseHomeDto.Data(2, "", "김지은"),
+                ResponseHomeDto.Data(3, "", "김지영"),
+                ResponseHomeDto.Data(4, "", "전채연"),
+                ResponseHomeDto.Data(5, "", "임채영"),
+                ResponseHomeDto.Data(6, "", "심혜빈")
             )
         )
     }

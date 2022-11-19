@@ -12,8 +12,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PlanViewModel : ViewModel() {
-    private val _planProfiles = MutableLiveData<ResponseHomeDto>()
-    val planProfiles: LiveData<ResponseHomeDto> get() = _planProfiles
+    private val _planProfiles = MutableLiveData<List<ResponseHomeDto.Data>>()
+    val planProfiles: LiveData<List<ResponseHomeDto.Data>> get() = _planProfiles
 
     fun getPlanMembers() {
         val nameThiefService = ServiceFactory.retrofitAuth.create(HomeService::class.java)
@@ -23,7 +23,7 @@ class PlanViewModel : ViewModel() {
                 response: Response<ResponseHomeDto>
             ) {
                 if (response.isSuccessful) {
-                    _planProfiles.value = response.body()
+                    _planProfiles.value = response.body()?.user
                 } else {
                     Log.e("home server connect", "onResponse Error")
                 }

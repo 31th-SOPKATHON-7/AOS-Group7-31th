@@ -11,25 +11,30 @@ import org.sopt.sopkathon_31th.data.remote.entity.home.ResponseHomeDto
 import org.sopt.sopkathon_31th.databinding.ItemPartMemberBinding
 
 class PartMembersAdapter :
-    ListAdapter<ResponseHomeDto, PartMembersAdapter.PartMembersViewHolder>(PartMembersComparator()) {
+    ListAdapter<ResponseHomeDto.Data, PartMembersAdapter.PartMembersViewHolder>(
+        PartMembersComparator()
+    ) {
     class PartMembersViewHolder(private val binding: ItemPartMemberBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ResponseHomeDto) {
-            binding.tvName.text = data.name
-            Glide.with(binding.ivProfile).load(data.profile).placeholder(R.drawable.dongjae)
+        fun onBind(data: ResponseHomeDto.Data) {
+            binding.tvName.text = data.nickname
+            Glide.with(binding.ivProfile).load(data.photoUrl).placeholder(R.drawable.dongjae)
                 .error(R.drawable.dongjae)
                 .into(binding.ivProfile)
         }
     }
 
-    class PartMembersComparator() : DiffUtil.ItemCallback<ResponseHomeDto>() {
-        override fun areItemsTheSame(oldItem: ResponseHomeDto, newItem: ResponseHomeDto): Boolean {
-            return oldItem.profile == newItem.profile
+    class PartMembersComparator() : DiffUtil.ItemCallback<ResponseHomeDto.Data>() {
+        override fun areItemsTheSame(
+            oldItem: ResponseHomeDto.Data,
+            newItem: ResponseHomeDto.Data
+        ): Boolean {
+            return oldItem.userId == newItem.userId
         }
 
         override fun areContentsTheSame(
-            oldItem: ResponseHomeDto,
-            newItem: ResponseHomeDto
+            oldItem: ResponseHomeDto.Data,
+            newItem: ResponseHomeDto.Data
         ): Boolean {
             return oldItem == newItem
         }
