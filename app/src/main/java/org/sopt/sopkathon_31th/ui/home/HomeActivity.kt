@@ -1,7 +1,6 @@
 package org.sopt.sopkathon_31th.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import org.sopt.sopkathon_31th.R
 import org.sopt.sopkathon_31th.databinding.ActivityHomeBinding
@@ -22,19 +21,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        homeAdapter = HomeAdapter { initFragment(it) }
+        homeAdapter = HomeAdapter(this) { initFragment(it) }
         binding.rvPart.adapter = homeAdapter
     }
 
     private fun initFragment(part: Int) {
-        Log.d("asdf", "클릭됨 part:$part")
         val transaction = supportFragmentManager.beginTransaction()
         when (part) {
-            0 -> {
-                Log.d("asdf", "호출1")
-                transaction.replace(R.id.fc_home, PlanFragment())
-                Log.d("asdf", "호출2")
-            }
+            0 -> transaction.replace(R.id.fc_home, PlanFragment())
             1 -> transaction.replace(R.id.fc_home, DesignFragment())
             2 -> transaction.replace(R.id.fc_home, AndroidFragment())
             3 -> transaction.replace(R.id.fc_home, IosFragment())

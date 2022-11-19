@@ -3,16 +3,27 @@ package org.sopt.sopkathon_31th.ui.home.part.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.sopt.sopkathon_31th.R
 import org.sopt.sopkathon_31th.databinding.ItemHomeBinding
 
 class HomeAdapter(private val clickPart: (Int) -> Unit) :
     RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private val parts = listOf<String>("전체", "기획", "디자인", "안드로이드", "iOS", "서버")
+    var selectedPosition: Int = -1
+    var exSelectedPosition: Int = -1
 
-    class HomeViewHolder(private val binding: ItemHomeBinding) :
+    inner class HomeViewHolder(
+        private val binding: ItemHomeBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(part: String) {
             binding.tvPart.text = part
+
+            if (itemView.isSelected) {
+                binding.tvPart.setBackgroundResource(R.color.black)
+            } else {
+                binding.tvPart.setBackgroundResource(R.color.gray_D8D8D8)
+            }
         }
     }
 
@@ -23,7 +34,20 @@ class HomeAdapter(private val clickPart: (Int) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.itemView.setOnClickListener { clickPart(position) }
+        holder.itemView.isSelected = (selectedPosition == position)
+        if (exSelectedPosition == position) {
+            holder.itemView.isSelected = false
+        }
+
+        holder.itemView.setOnClickListener {
+            clickPart(position)
+            if (position != selectedPosition) {
+                exSelectedPosition = selectedPosition
+                selectedPosition = position
+                notifyItemChanged(exSelectedPosition)
+                notifyItemChanged(selectedPosition)
+            }
+        }
         return holder.onBind(parts[position])
     }
 
