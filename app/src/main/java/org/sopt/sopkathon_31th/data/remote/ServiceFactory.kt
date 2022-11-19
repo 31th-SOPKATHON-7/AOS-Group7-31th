@@ -3,6 +3,7 @@ package org.sopt.sopkathon_31th.data.remote // ktlint-disable package-name
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import org.sopt.sopkathon_31th.data.remote.api.profile.ProfileService
 import org.sopt.sopkathon_31th.data.remote.api.quiz.QuizService
 import retrofit2.Retrofit
 
@@ -21,4 +22,5 @@ object ServiceFactory {
 
 object ServicePool {
     val quizService = ServiceFactory.create<QuizService>()
+    val profileService = ServiceFactory.create<ProfileService>()
 }
