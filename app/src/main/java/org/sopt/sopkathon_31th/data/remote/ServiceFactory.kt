@@ -6,7 +6,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 
 object ServiceFactory {
-    private const val BASE_URL = ""
+    private const val BASE_URL = "https://4d9cc071-f745-4823-bcf0-fd31ae1b6f6b.mock.pstmn.io"
 
     val retrofitAuth: Retrofit by lazy {
         Retrofit.Builder()
