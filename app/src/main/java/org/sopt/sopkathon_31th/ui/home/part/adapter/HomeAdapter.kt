@@ -9,7 +9,7 @@ import org.sopt.sopkathon_31th.databinding.ItemHomeBinding
 class HomeAdapter(private val clickPart: (Int) -> Unit) :
     RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private val parts = listOf<String>("전체", "기획", "디자인", "안드로이드", "iOS", "서버")
-    var selectedPosition: Int = -1
+    var selectedPosition: Int = 0
     var exSelectedPosition: Int = -1
 
     inner class HomeViewHolder(
