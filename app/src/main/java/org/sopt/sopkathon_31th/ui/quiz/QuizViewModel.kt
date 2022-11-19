@@ -32,7 +32,7 @@ class QuizViewModel : ViewModel() {
         get() = _errorMessage
 
     /** 서버에 퀴즈 리스트 요청 */
-    fun getQuizList(userId: Long) {
+    fun getQuizList(userId: Int) {
         // 서버 통신 API 연결
         quizService.getQuizList(userId).enqueue(object : Callback<ResponseQuizDto> {
             override fun onResponse(
